@@ -1,4 +1,5 @@
 module.exports = {
+  parser: "babel-eslint",
   env: {
     browser: true,
     es6: true,
@@ -20,5 +21,6 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "prettier/prettier": ["error"],
     "react/jsx-props-no-spreading": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
   },
 };
