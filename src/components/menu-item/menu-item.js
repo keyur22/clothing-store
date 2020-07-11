@@ -6,14 +6,21 @@ import PropTypes from "prop-types";
 
 import "./menu-item.scss";
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
+const MenuItem = ({
+  title,
+  imageUrl,
+  size,
+  linkUrl,
+  history: { push },
+  match: { url },
+}) => (
   <div className={`${size} menu-item`}>
     <div
       className="background-image"
       style={{
         backgroundImage: `url(${imageUrl})`,
       }}
-      onClick={() => history.push(`${match.url}${linkUrl}`)}
+      onClick={() => push(`${url}${linkUrl}`)}
     />
     <div className="content">
       <h1 className="title">{title.toUpperCase()}</h1>
@@ -22,13 +29,24 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
   </div>
 );
 
-MenuItem.propTypes = {
+const propTypes = {
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
   linkUrl: PropTypes.string.isRequired,
-  match: PropTypes.string.isRequired,
-  history: PropTypes.arrayOf(PropTypes.string).isRequired,
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
+
+const defaultProps = {
+  size: "",
+};
+
+MenuItem.propTypes = propTypes;
+MenuItem.defaultProps = defaultProps;
 
 export default withRouter(MenuItem);

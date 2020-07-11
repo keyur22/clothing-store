@@ -14,7 +14,7 @@ const CollectionItem = ({ name, price, imageUrl }) => (
 
 const propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
 };
 

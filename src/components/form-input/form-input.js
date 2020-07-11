@@ -21,11 +21,12 @@ const FormInput = ({ handleChange, label, ...otherProps }) => (
 );
 
 const propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
   label: PropTypes.string,
 };
 
 const defaultProps = {
+  handleChange: () => {},
   label: "",
 };
 
