@@ -12,6 +12,8 @@ import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
+  unsubscribeFromSnapshot = null;
+
   constructor() {
     super();
 
@@ -25,7 +27,7 @@ class App extends React.Component {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapshot) => {
+        this.unsubscribeFromSnapshot = userRef.onSnapshot((snapshot) => {
           this.setState({
             currentUser: {
               id: snapshot.id,
@@ -41,6 +43,7 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
+    this.unsubscribeFromSnapshot();
   }
 
   render() {
