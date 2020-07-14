@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
@@ -44,27 +44,47 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <div>
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={SignInAndSignUpPage} />
+          <Route
+            exact
+            path="/signin"
+            render={
+              () =>
+                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+              // eslint-disable-next-line react/jsx-curly-newline
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
 
+const propTypes = {
+  currentUser: PropTypes.shape({}),
+  setCurrentUser: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  currentUser: null,
+};
+
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
+
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-const propTypes = {
-  setCurrentUser: PropTypes.func.isRequired,
-};
-
-App.propTypes = propTypes;
-
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

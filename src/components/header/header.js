@@ -43,11 +43,11 @@ const defaultProps = {
   currentUser: {},
 };
 
+Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
+
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
-
-Header.propTypes = propTypes;
-Header.defaultProps = defaultProps;
 
 export default connect(mapStateToProps)(Header);

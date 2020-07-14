@@ -1,4 +1,12 @@
+import { userActionTypes } from "./user-actionTypes";
+
 export const setCurrentUser = (user) => ({
-  type: "SET_CURRENT_USER",
+  type: userActionTypes.SET_CURRENT_USER,
+  payload: user,
+});
+
+// TP Function
+export const getCurrentUser = (user) => ({
+  type: userActionTypes.SET_CURRENT_USER,
   payload: user,
 });
