@@ -11,21 +11,26 @@ import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import "./cart-icon.scss";
 
 // eslint-disable-next-line no-shadow
-const CartIcon = ({ toggleCartHidden }) => (
+const CartIcon = ({ cartItemsCount, toggleCartHidden }) => (
   <div className="cart-icon" onClick={() => toggleCartHidden()}>
     <ShoppingIcon className="shopping-icon" />
-    <span className="item-count">0</span>
+    <span className="item-count">{cartItemsCount}</span>
   </div>
 );
 
 const propTypes = {
   toggleCartHidden: PropTypes.func.isRequired,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 CartIcon.propTypes = propTypes;
+
+const mapStateToProps = (state) => ({
+  cartItemsCount: state.cart.cartItems.length,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
