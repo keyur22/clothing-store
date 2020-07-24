@@ -14,4 +14,11 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
-export const abc = () => console.log("reach");
+export const removeItemFromCart = (cartItems, itemToRemove) => {
+  return cartItems.map((item) => {
+    if (item.id === itemToRemove.id) {
+      return { ...item, quantity: item.quantity - 1 };
+    }
+    return item;
+  });
+};
