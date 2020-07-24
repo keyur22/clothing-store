@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { auth } from "../../firebase/firebase.utils";
+
+import { selectCurrentUser } from "../../redux/user/user-selectors";
+import { selectCartHidden } from "../../redux/cart/cart-selectors";
 
 import CartIcon from "../cart-icon/cart-icon";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
@@ -54,9 +58,9 @@ const defaultProps = {
 Header.propTypes = propTypes;
 Header.defaultProps = defaultProps;
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-  hidden: state.cart.hidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);

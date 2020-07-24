@@ -17,6 +17,7 @@ class ShopPage extends React.Component {
     return (
       <div className="shop-page">
         {collections.map(({ id, ...collectionProps }) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
           <CollectionPreview key={id} {...collectionProps} />
         ))}
       </div>
