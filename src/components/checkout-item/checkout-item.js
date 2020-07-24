@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
@@ -22,8 +21,10 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
       <span className="quantity">
         <div
           className="arrow"
-          onClick={() =>
-            quantity === 1 ? clearItem(cartItem) : removeItem(cartItem)}
+          onClick={
+            () => (quantity === 1 ? clearItem(cartItem) : removeItem(cartItem))
+            // eslint-disable-next-line react/jsx-curly-newline
+          }
         >
           &#10094;
         </div>
