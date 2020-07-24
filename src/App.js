@@ -8,6 +8,7 @@ import Header from "./components/header/header";
 import HomePage from "./pages/homepage/homepage";
 import ShopPage from "./pages/shop/shop";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
+import CheckoutPage from "./pages/checkout/checkout";
 
 import { setCurrentUser } from "./redux/user/user-actions";
 
@@ -61,6 +62,7 @@ class App extends React.Component {
               // eslint-disable-next-line react/jsx-curly-newline
             }
           />
+          <Route path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );
