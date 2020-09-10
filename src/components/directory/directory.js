@@ -1,29 +1,30 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createStructuredSelector } from "reselect";
 import MenuItem from "../menu-item/menu-item";
-import sectionsData from "./sections.data";
+
+import { selectDirectorySections } from "../../redux/directory/directory-selectors";
 
 import "./directory.scss";
 
-class Directory extends React.Component {
-  constructor(props) {
-    super(props);
+const Directory = ({ sections }) => (
+  <div className="directory-menu">
+    {sections.map(({ id, ...sectionProps }) => (
+      <MenuItem key={id} {...sectionProps} />
+    ))}
+  </div>
+);
 
-    this.state = {
-      sections: sectionsData,
-    };
-  }
+const propTypes = {
+  sections: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
 
-  render() {
-    const { sections } = this.state;
+Directory.propTypes = propTypes;
 
-    return (
-      <div className="directory-menu">
-        {sections.map(({ id, ...sectionProps }) => (
-          <MenuItem key={id} {...sectionProps} />
-        ))}
-      </div>
-    );
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  sections: selectDirectorySections,
+});
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);

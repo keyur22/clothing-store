@@ -25,6 +25,7 @@ class SignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
+      // eslint-disable-next-line no-alert
       alert("passwords don't match");
       return;
     }
@@ -44,6 +45,7 @@ class SignUp extends React.Component {
         confirmPassword: "",
       });
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   };

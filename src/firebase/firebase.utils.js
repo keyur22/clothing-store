@@ -37,10 +37,12 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log("Error Creating User", err.message);
     }
   }
 
+  // eslint-disable-next-line consistent-return
   return userRef;
 };
 

@@ -22,5 +22,8 @@ module.exports = {
     "prettier/prettier": ["error"],
     "react/jsx-props-no-spreading": "warn",
     "jsx-a11y/label-has-associated-control": "warn",
+    "prettier/prettier": ["error", {
+     "endOfLine":"auto"
+   }],
   },
 };
