@@ -4,7 +4,13 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import "./menu-item.scss";
+import {
+  MenuItemContainer,
+  BackgroundImageContainer,
+  ContentContainer,
+  ContentTitle,
+  ContentSubtitle,
+} from "./menu-item.styles";
 
 const MenuItem = ({
   title,
@@ -14,19 +20,16 @@ const MenuItem = ({
   history: { push },
   match: { url },
 }) => (
-  <div className={`${size} menu-item`}>
-    <div
-      className="background-image"
-      style={{
-        backgroundImage: `url(${imageUrl})`,
-      }}
+  <MenuItemContainer size={size}>
+    <BackgroundImageContainer
+      imageUrl={imageUrl}
       onClick={() => push(`${url}${linkUrl}`)}
     />
-    <div className="content">
-      <h1 className="title">{title.toUpperCase()}</h1>
-      <span className="subtitle">SHOP NOW</span>
-    </div>
-  </div>
+    <ContentContainer>
+      <ContentTitle>{title.toUpperCase()}</ContentTitle>
+      <ContentSubtitle className="subtitle">SHOP NOW</ContentSubtitle>
+    </ContentContainer>
+  </MenuItemContainer>
 );
 
 const propTypes = {

@@ -7,14 +7,14 @@ import MenuItem from "../menu-item/menu-item";
 
 import { selectDirectorySections } from "../../redux/directory/directory-selectors";
 
-import "./directory.scss";
+import { DirectoryContainer } from "./directory.styles";
 
 const Directory = ({ sections }) => (
-  <div className="directory-menu">
+  <DirectoryContainer>
     {sections.map(({ id, ...sectionProps }) => (
       <MenuItem key={id} {...sectionProps} />
     ))}
-  </div>
+  </DirectoryContainer>
 );
 
 const propTypes = {

@@ -3,31 +3,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./form-input.scss";
+import {
+  GroupContainer,
+  FormInputContainer,
+  FormInputLabel,
+} from "./form-input.styles";
 
-const FormInput = ({ handleChange, label, ...otherProps }) => (
-  <div className="group">
-    <input className="form-input" onChange={handleChange} {...otherProps} />
+const FormInput = ({ handleChange, label, value, ...props }) => (
+  <GroupContainer>
+    <FormInputContainer onChange={handleChange} {...props} />
     {label ? (
-      <label
-        className={`${
-          otherProps.value.length ? "shrink" : ""
-        } form-input-label`}
-      >
+      <FormInputLabel className={value.length ? "shrink" : ""}>
         {label}
-      </label>
+      </FormInputLabel>
     ) : null}
-  </div>
+  </GroupContainer>
 );
 
 const propTypes = {
   handleChange: PropTypes.func,
   label: PropTypes.string,
+  value: PropTypes.string,
 };
 
 const defaultProps = {
   handleChange: () => {},
   label: "",
+  value: "",
 };
 
 FormInput.propTypes = propTypes;
