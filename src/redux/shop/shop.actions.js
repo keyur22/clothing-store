@@ -23,7 +23,6 @@ export const fetchCollectionsAsync = () => {
   return (dispatch) => {
     dispatch(fetchCollectionsStart());
     const collectionsRef = firestore.collection("collections");
-    console.log(collectionsRef);
 
     collectionsRef
       .get()
