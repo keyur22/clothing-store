@@ -3,9 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createStructuredSelector } from "reselect";
-import MenuItem from "../menu-item/menu-item";
 
 import { selectDirectorySections } from "../../redux/directory/directory-selectors";
+
+import MenuItem from "../menu-item/menu-item";
 
 import { DirectoryContainer } from "./directory.styles";
 

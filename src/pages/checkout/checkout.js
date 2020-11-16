@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import CheckoutItem from "../../components/checkout-item/checkout-item";
-import StripeCheckoutButton from "../../components/stripe-checkout-button/stripe-checkout-button";
-
 import {
   selectCartItems,
   selectCartTotal,
 } from "../../redux/cart/cart-selectors";
+
+import CheckoutItem from "../../components/checkout-item/checkout-item";
+import StripeCheckoutButton from "../../components/stripe-checkout-button/stripe-checkout-button";
 
 import {
   CheckoutPageContainer,

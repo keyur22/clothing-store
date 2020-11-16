@@ -3,8 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createStructuredSelector } from "reselect";
-import CollectionPreview from "../collection-preview/collection-preview";
+
 import { selectCollectionsForPreview } from "../../redux/shop/shop-selectors";
+
+import CollectionPreview from "../collection-preview/collection-preview";
 
 import { CollectionOverviewContainer } from "./collection-overview.styles";
 

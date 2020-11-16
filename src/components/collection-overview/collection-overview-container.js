@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { createStructuredSelector } from "reselect";
 import { selectIsCollectionFetching } from "../../redux/shop/shop-selectors";
+
 import withSpinner from "../with-spinner/with-spinner";
 import CollectionOverview from "./collection-overview";
 

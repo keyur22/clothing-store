@@ -5,15 +5,15 @@ import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { fetchCollectionsStart } from "../../redux/shop/shop-actions";
+
 import CollectionOverviewContainer from "../../components/collection-overview/collection-overview-container";
 import CollectionContainer from "../collection/collection-container";
 
-import { fetchCollectionsAsync } from "../../redux/shop/shop.actions";
-
 class ShopPage extends React.Component {
   componentDidMount() {
-    const { fetchCollectionsAsync } = this.props;
-    fetchCollectionsAsync();
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart();
   }
 
   render() {
@@ -39,13 +39,13 @@ const propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
   }).isRequired,
-  fetchCollectionsAsync: PropTypes.func.isRequired,
+  fetchCollectionsStart: PropTypes.func.isRequired,
 };
 
 ShopPage.propTypes = propTypes;
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCollectionsAsync: () => dispatch(fetchCollectionsAsync()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
